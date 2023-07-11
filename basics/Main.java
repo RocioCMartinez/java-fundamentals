@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Main {
   public static void main(String[] args){
     int dogCount = 1;
@@ -8,6 +10,9 @@ public class Main {
 
     int turtleCount = 0;
     System.out.println("I own " + turtleCount + " " + pluralize("turtle", turtleCount) + ".");
+
+    flipNHeads(2);
+    flipNHeads(3);
   }
 
   public static String pluralize(String word, int number) {
@@ -17,4 +22,30 @@ public class Main {
       return word;
     }
   }
+
+  public static void flipNHeads(int n) {
+    Random random = new Random();
+    int flips = 0;
+    int headFlips = 0;
+    
+
+
+    while (headFlips < n){
+      flips++;
+      float coinFlip = random.nextFloat();
+
+      if (coinFlip > 0.5){
+        System.out.println("heads");
+        headFlips++;
+
+      } else {
+        System.out.println("tails");
+        headFlips = 0;
+      }
+
+    }
+    System.out.println("It took " + flips + " flips to flip " + headFlips + " head in a row");
+  }
+
+  
 }
