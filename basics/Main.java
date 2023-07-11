@@ -1,3 +1,5 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 public class Main {
@@ -13,6 +15,10 @@ public class Main {
 
     flipNHeads(2);
     flipNHeads(3);
+
+    clock();
+
+
   }
 
   public static String pluralize(String word, int number) {
@@ -47,5 +53,17 @@ public class Main {
     System.out.println("It took " + flips + " flips to flip " + headFlips + " head in a row");
   }
 
+  public static void clock() {
+    LocalDateTime pastTime = null;
+
+    while (true) {
+      LocalDateTime currentTime = LocalDateTime.now();
+      if (pastTime == null || pastTime.getSecond() != currentTime.getSecond()) {
+        String time = currentTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        System.out.println(time);
+      }
+      pastTime = currentTime;
+    }
+  }
   
 }
