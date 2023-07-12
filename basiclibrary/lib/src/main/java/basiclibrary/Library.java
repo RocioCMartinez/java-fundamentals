@@ -28,4 +28,19 @@ public class Library {
 
         return false; // No duplicate values found
     }
+
+    public static double calculateAverage(int[] arr) {
+        if (arr.length == 0) {
+            return 0.0; // Return 0 for an empty array to avoid division by zero
+        }
+
+        int sum = 0;
+        for (int num : arr) {
+            sum += num; // Calculate the sum of all the values in the array
+        }
+
+        double average = (double) sum / arr.length; // Calculate the average
+
+        return average;
+    }
 }
