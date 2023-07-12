@@ -21,7 +21,15 @@ class LibraryTest {
         for (int roll : rolls) {
             assertTrue(roll >= 1 && roll <= 6);
         }
+    }
 
+    @Test public void testContainsDuplicates() {
+        Library sut = new Library();
 
+        int[] array1 = {1, 2, 3, 4, 5};
+        int[] array2 = {1, 2, 3, 3, 4};
+
+        assertFalse(sut.containsDuplicates(array1)); // No duplicates, should return false
+        assertTrue(sut.containsDuplicates(array2)); // Duplicates present, should return true
     }
 }
