@@ -32,4 +32,20 @@ class LibraryTest {
         assertFalse(sut.containsDuplicates(array1)); // No duplicates, should return false
         assertTrue(sut.containsDuplicates(array2)); // Duplicates present, should return true
     }
+
+    @Test public void testCalculateAverage() {
+        Library sut = new Library();
+
+        int[] numbers1 = {1, 2, 3, 4, 5};
+        double average1 = sut.calculateAverage(numbers1);
+        assertEquals(3.0, average1); // Expected average: 3.0
+
+        int[] numbers2 = {0, -5, 10, 7, -3};
+        double average2 = sut.calculateAverage(numbers2);
+        assertEquals(1.8, average2); // Expected average: 1.8
+
+        int[] numbers3 = {};
+        double average3 = sut.calculateAverage(numbers3);
+        assertEquals(0.0, average3); // Expected average: 0.0 (for an empty array)
+    }
 }
