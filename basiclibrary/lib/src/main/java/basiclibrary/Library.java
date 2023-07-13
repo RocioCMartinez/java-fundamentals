@@ -4,6 +4,9 @@
 package basiclibrary;
 import java.util.HashSet;
 import java.util.Random;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
 
 public class Library {
     public static int[] roll(int n) {
@@ -94,5 +97,26 @@ public class Library {
         result += missingTemps;
 
         return result;
+    }
+
+    public static String tally(List<String> votes) {
+        Map<String, Integer> voteCount = new HashMap<>();
+
+        // Count the votes
+        for (String vote : votes) {
+            voteCount.put(vote, voteCount.getOrDefault(vote, 0) + 1);
+        }
+
+        // Find the option with the maximum votes
+        String winner = "";
+        int maxVotes = 0;
+        for (Map.Entry<String, Integer> entry : voteCount.entrySet()) {
+            if (entry.getValue() > maxVotes) {
+                maxVotes = entry.getValue();
+                winner = entry.getKey();
+            }
+        }
+
+        return winner + " received the most votes!";
     }
 }
