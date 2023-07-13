@@ -43,4 +43,18 @@ public class Library {
 
         return average;
     }
+
+    // From Code Review / Aaron Clark
+    public int[] lowestAverage(int[][] arr){
+        int minIndex = 0;
+        double minAvg = Double.MAX_VALUE;
+        for (int i = 0; i < arr.length; i++){
+            double average = calculateAverage(arr[i]);
+            if (average < minAvg){
+                minIndex = i;
+                minAvg = average;
+            }
+        }
+        return arr[minIndex];
+    }
 }
