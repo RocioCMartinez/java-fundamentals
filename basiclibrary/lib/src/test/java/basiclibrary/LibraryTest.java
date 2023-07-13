@@ -48,4 +48,19 @@ class LibraryTest {
         double average3 = sut.calculateAverage(numbers3);
         assertEquals(0.0, average3); // Expected average: 0.0 (for an empty array)
     }
+
+    // From Code Review / Aaron Clark
+    @Test public void testLowestAverage() {
+        Library sut = new Library();
+        int[][] weeklyMonthTemperatures = {
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+                {65, 56, 55, 52, 55, 62, 57}
+        };
+        int[] expected = {55, 54, 60, 53, 59, 57, 61};
+        int[] actualOutput = sut.lowestAverage(weeklyMonthTemperatures);
+
+        assertArrayEquals(expected, actualOutput, "Expected array {55, 54, 60, 53, 59, 57,61}");
+    }
 }
