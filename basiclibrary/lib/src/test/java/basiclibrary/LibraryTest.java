@@ -5,6 +5,8 @@ package basiclibrary;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
+import java.util.ArrayList;
 
 class LibraryTest {
     @Test public void rollTest() {
@@ -64,8 +66,7 @@ class LibraryTest {
         assertArrayEquals(expected, actualOutput, "Expected array {55, 54, 60, 53, 59, 57,61}");
     }
 
-    @Test
-    public void testAnalyzeWeatherData() {
+    @Test public void testAnalyzeWeatherData() {
         Library sut = new Library();
         int[][] weeklyMonthTemperatures = {
                 {66, 64, 58, 65, 71, 57, 60},
@@ -86,6 +87,28 @@ class LibraryTest {
 
         assertEquals(expectedOutput, resultOutput);
     }
+
+    @Test public void testTally() {
+        Library sut = new Library();
+
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+
+
+        String result = sut.tally(votes);
+
+        assertEquals("Bush received the most votes!", result);
+
+    }
+
 
 
 }
