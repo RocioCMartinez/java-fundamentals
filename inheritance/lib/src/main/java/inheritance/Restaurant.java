@@ -9,7 +9,9 @@ public class Restaurant {
 
       //Constructors
 
+    public Restaurant() {
 
+    }
     public Restaurant(String name, int stars, int priceCat) {
         this.name = name;
         this.stars = stars;
@@ -40,6 +42,10 @@ public class Restaurant {
     public void setPriceCat(int priceCat) {
         this.priceCat = priceCat;
     }
+
+    // Add review method
+
+   
 
     // toString method
     @Override public String toString() {

@@ -17,8 +17,13 @@ class LibraryTest {
         System.out.println(Test);
     }
 
-    @Test void testReview() {
-        Review Test = new Review("Rocio", "Good option for teenagers", 3);
+//    @Test void testReview() {
+//        Review Test = new Review("Rocio", "Good option for teenagers", 3);
+//        System.out.println(Test);
+//    }
+
+    @Test void testRestaurantReview() {
+        Review Test = new Review("Wing Stop", 2, 2, "Rocio", "Good option for sport events", 1);
         System.out.println(Test);
     }
 }
