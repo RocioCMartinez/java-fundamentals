@@ -1,16 +1,25 @@
 package inheritance;
 
-public class Review extends Restaurant {
+public class Review {
+    static String restaurantName;
     String author;
     String body;
 
-   int rating;
+   double rating;
 
-    public Review(String name, int stars, int priceCat, String author, String body, int rating) {
-        super(name, stars, priceCat);
+    public Review(String restaurantName, String author, String body, double rating) {
+        this.restaurantName = restaurantName;
         this.author = author;
         this.body = body;
         this.rating = rating;
+    }
+
+    public String getRestaurantName() {
+        return restaurantName;
+    }
+
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
     }
 
     public String getAuthor() {
@@ -29,24 +38,21 @@ public class Review extends Restaurant {
         this.body = body;
     }
 
-    public int getRating() {
-        return rating;
+    public double getRating() {
+        if (rating < 0) {
+            this.rating = 0;
+        } else if (rating > 5) {
+            this.rating = 5;
+        }
+        return this.rating;
     }
 
-    public void setRating(int rating) {
-        this.rating = rating;
+    public void setRating(double rating) {
+       this.rating = rating;
     }
 
-//    @Override public String toString() {
-//        return "Review{" +
-//                "Author: " + author +
-//                " Body: " + body +
-//                " Star Rating: " + stars +
-//                '}';
-//    }
 
     @Override public String toString() {
-        return "Restaurant Review {Restaurant: " + name + ", Star Rating: " + stars + ", Price Category: " + priceCat +
-                ", Author: " + author + ", Body: " + body + "}";
+        return "Restaurant Review {Restaurant: " + restaurantName + ", Author: " + author + ", Body: " + body + "}";
     }
 }

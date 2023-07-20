@@ -4,6 +4,9 @@
 package inheritance;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LibraryTest {
@@ -15,15 +18,37 @@ class LibraryTest {
     @Test void testRestaurant() {
         Restaurant Test = new Restaurant("Applebees", 2,1);
         System.out.println(Test);
+
+        assertEquals("Restaurant{Name: Applebees Star Rating: 2 Price Category: 1}", Test.toString());
     }
 
-//    @Test void testReview() {
-//        Review Test = new Review("Rocio", "Good option for teenagers", 3);
-//        System.out.println(Test);
-//    }
+    @Test void testReview() {
+        Review reviewTest = new Review("Applebees","Rocio", "Good option for teenagers", 3);
+        System.out.println(reviewTest);
 
-    @Test void testRestaurantReview() {
-        Review Test = new Review("Wing Stop", 2, 2, "Rocio", "Good option for sport events", 1);
-        System.out.println(Test);
+        assertEquals("Restaurant Review {Author: Rocio, Body: Good option for teenagers}", reviewTest.toString());
+    }
+
+    @Test void testAddReview() {
+        Restaurant Test = new Restaurant("Applebees", 2,1);
+        Review reviewTest = new Review("Applebees","Rocio", "Good option for teenagers", 3);
+
+       Test.addReview(reviewTest);
+
+
+        assertEquals(Test.name, reviewTest.getRestaurantName());
+    }
+
+    @Test void testStarAverage() {
+        Restaurant Test = new Restaurant("Applebees", 2, 1);
+        Review reviewTest = new Review("Applebees", "Rocio", "Good option for teenagers", 3);
+        Review reviewTest2 = new Review("Applebees", "Jeff", "I love their happy hour specials", 5);
+
+        Test.addReview(reviewTest);
+        Test.addReview(reviewTest2);
+
+        double expectedOutcome = Test.getStarAverage();
+
+        assertEquals(4, expectedOutcome);
     }
 }
