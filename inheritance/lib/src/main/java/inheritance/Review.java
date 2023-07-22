@@ -1,25 +1,30 @@
 package inheritance;
 
 public class Review {
-    static String restaurantName;
+    static String businessName;
     String author;
     String body;
 
-   double rating;
 
-    public Review(String restaurantName, String author, String body, double rating) {
-        this.restaurantName = restaurantName;
+   float rating;
+
+    public Review() {
+    }
+
+    public Review(String businessName, String author, String body, float rating) {
+        this.businessName = businessName;
         this.author = author;
         this.body = body;
         this.rating = rating;
     }
 
+
     public String getRestaurantName() {
-        return restaurantName;
+        return businessName;
     }
 
-    public void setRestaurantName(String restaurantName) {
-        this.restaurantName = restaurantName;
+    public void setRestaurantName(String businessName) {
+        this.businessName = businessName;
     }
 
     public String getAuthor() {
@@ -47,12 +52,12 @@ public class Review {
         return this.rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(float rating) {
        this.rating = rating;
     }
 
 
     @Override public String toString() {
-        return "Restaurant Review {Restaurant: " + restaurantName + ", Author: " + author + ", Body: " + body + "}";
+        return "Business Review {Business: " + businessName + ", Author: " + author + ", Body: " + body + "}";
     }
 }
