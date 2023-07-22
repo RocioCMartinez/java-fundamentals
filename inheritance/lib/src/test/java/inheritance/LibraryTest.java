@@ -5,7 +5,7 @@ package inheritance;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,18 +19,18 @@ class LibraryTest {
         Restaurant Test = new Restaurant("Applebees", 2,1);
         System.out.println(Test);
 
-        assertEquals("Restaurant{Name: Applebees Star Rating: 2 Price Category: 1}", Test.toString());
+        assertEquals("Restaurant{ Name: Applebees Star Rating: 2.0 Price Category: 1}", Test.toString());
     }
 
     @Test void testReview() {
         Review reviewTest = new Review("Applebees","Rocio", "Good option for teenagers", 3);
         System.out.println(reviewTest);
 
-        assertEquals("Restaurant Review {Author: Rocio, Body: Good option for teenagers}", reviewTest.toString());
+        assertEquals("Business Review {Business: Applebees, Author: Rocio, Body: Good option for teenagers}", reviewTest.toString());
     }
 
     @Test void testAddReview() {
-        Restaurant Test = new Restaurant("Applebees", 2,1);
+        Restaurant Test = new Restaurant("Applebees", 2, 1);
         Review reviewTest = new Review("Applebees","Rocio", "Good option for teenagers", 3);
 
        Test.addReview(reviewTest);
@@ -47,8 +47,40 @@ class LibraryTest {
         Test.addReview(reviewTest);
         Test.addReview(reviewTest2);
 
-        double expectedOutcome = Test.getStarAverage();
+        float actualOutcome = Test.getStarAverage();
 
-        assertEquals(4, expectedOutcome);
+        assertEquals(4, actualOutcome);
+    }
+
+    @Test void testShop() {
+        Shop Test = new Shop("Hot Topic", 3, "Alternative clothing store primarily for emo market", 5);
+        Review reviewTest = new Review("Hot Topic", "Rocio", "Good option for teenagers", 3);
+        Review reviewTest2 = new Review("Hot Topic", "Jeff", "Not enough variety for male clothing", 1);
+
+        Test.addReview(reviewTest);
+        Test.addReview(reviewTest2);
+
+        float actualOutcome = Test.getStarAverage();
+
+        assertEquals(2, actualOutcome);
+        assertEquals("Hot Topic", Test.getName());
+
+    }
+
+    @Test void testMovieTheaterAndMovieReview() {
+        MovieTheater Test = new MovieTheater("Regal", 3);
+        MovieReview reviewTest = new MovieReview("Regal", "Rocio", "Very clean and up to date", 3, "Barbie");
+        MovieReview reviewTest2 = new MovieReview("Regal", "Jeff", "Brought the whole family along for a fun night out", 5, "Guardians");
+
+        Test.addReview(reviewTest);
+        Test.addReview(reviewTest2);
+        Test.addMovie("Barbie");
+
+        float actualOutcome = Test.getStarAverage();
+
+        assertEquals(4, actualOutcome);
+        assertEquals("Regal", Test.getName());
+        assertTrue(Test.movies.contains("Barbie"));
+
     }
 }
